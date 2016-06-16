@@ -61,7 +61,7 @@ indicator.setViewPager(mViewPager);
 License
 =======
 
-    Copyright (c) 2013 Etsy
+    Copyright (c) 2016 Yan Gao
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
