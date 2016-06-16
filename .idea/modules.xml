@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BottomPageIndicator.iml" filepath="$PROJECT_DIR$/BottomPageIndicator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BottomViewPagerIndicator.iml" filepath="$PROJECT_DIR$/BottomViewPagerIndicator.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/pageindicator/pageindicator.iml" filepath="$PROJECT_DIR$/pageindicator/pageindicator.iml" />
     </modules>

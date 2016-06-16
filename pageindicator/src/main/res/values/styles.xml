@@ -6,10 +6,9 @@
             <enum name="image" value="0"/>
             <enum name="text" value="1"/>
         </attr>
-        <attr name="indicator_icon" format="reference"/>
         <attr name="indicator_textSize" format="dimension"/>
         <attr name="indicator_textColor" format="color"/>
-        <attr name="strokeDrawable" format="reference"/>
-        <attr name="solidDrawable" format="reference"/>
+        <attr name="indicator_selectDrawable" format="reference"/>
+        <attr name="indicator_unSelectDrawable" format="reference"/>
     </declare-styleable>
 </resources>

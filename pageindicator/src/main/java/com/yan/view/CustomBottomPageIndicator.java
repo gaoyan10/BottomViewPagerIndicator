@@ -6,6 +6,9 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewPager;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -68,17 +71,39 @@ public class CustomBottomPageIndicator  extends LinearLayout implements ViewPage
     }
 
     public CustomBottomPageIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+        this(context, attrs, defStyleAttr, 0);
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CustomBottomPageIndicator, 0, 0);
         try {
             mIndicatorSpacing = a.getDimensionPixelSize(R.styleable.CustomBottomPageIndicator_indicator_spacing, DEFAULT_INDICATOR_SPACING);
             mTextSize = a.getDimensionPixelSize(R.styleable.CustomBottomPageIndicator_indicator_textSize, 14);
             mTextColor = a.getColor(R.styleable.CustomBottomPageIndicator_indicator_textColor, 0xffffff);
-            solidDrawable = a.getDrawable(R.styleable.CustomBottomPageIndicator_solidDrawable); //实心球
+            solidDrawable = a.getDrawable(R.styleable.CustomBottomPageIndicator_indicator_selectDrawable); //实心球
             if (solidDrawable == null) {
                 solidDrawable = a.getResources().getDrawable(R.drawable.circle_indicator_solid);
             }
-            strokeDrawable = a.getDrawable(R.styleable.CustomBottomPageIndicator_strokeDrawable);
+            strokeDrawable = a.getDrawable(R.styleable.CustomBottomPageIndicator_indicator_unSelectDrawable);
+            if (strokeDrawable == null) {
+                strokeDrawable = a.getResources().getDrawable(R.drawable.circle_indicator_stroke);
+            }
+            mIndicatorType = IndicatorType.of(a.getInt(R.styleable.CustomBottomPageIndicator_indicator_type, mIndicatorType.type));
+        }finally {
+            a.recycle();
+        }
+        init();
+    }
+
+    public CustomBottomPageIndicator(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, 0);
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CustomBottomPageIndicator, 0, 0);
+        try {
+            mIndicatorSpacing = a.getDimensionPixelSize(R.styleable.CustomBottomPageIndicator_indicator_spacing, DEFAULT_INDICATOR_SPACING);
+            mTextSize = a.getDimensionPixelSize(R.styleable.CustomBottomPageIndicator_indicator_textSize, 14);
+            mTextColor = a.getColor(R.styleable.CustomBottomPageIndicator_indicator_textColor, 0xffffff);
+            solidDrawable = a.getDrawable(R.styleable.CustomBottomPageIndicator_indicator_selectDrawable); //实心球
+            if (solidDrawable == null) {
+                solidDrawable = a.getResources().getDrawable(R.drawable.circle_indicator_solid);
+            }
+            strokeDrawable = a.getDrawable(R.styleable.CustomBottomPageIndicator_indicator_unSelectDrawable);
             if (strokeDrawable == null) {
                 strokeDrawable = a.getResources().getDrawable(R.drawable.circle_indicator_stroke);
             }

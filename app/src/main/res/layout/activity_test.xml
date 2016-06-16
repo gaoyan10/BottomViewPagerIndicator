@@ -9,8 +9,8 @@
         android:gravity="bottom|center_horizontal"
         app:indicator_spacing="5dp"
         app:indicator_type="image"
-        app:strokeDrawable="@drawable/ic_welcome_transparent"
-        app:solidDrawable="@drawable/ic_welcome_white"
+        app:indicator_unSelectDrawable="@drawable/ic_welcome_transparent"
+        app:indicator_selectDrawable="@drawable/ic_welcome_white"
         android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
